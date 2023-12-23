@@ -8,6 +8,7 @@
 qt_internal_add_module(LanguageServerPrivate
     INTERNAL_MODULE
     SOURCES
+      qlanguageserver_p.h qlanguageserver_p_p.h qlanguageserver.cpp
       qlanguageserverprespectypes_p.h
       qlanguageserverspec_p.h
       qlanguageserverspectypes_p.h
@@ -17,6 +18,7 @@ qt_internal_add_module(LanguageServerPrivate
       qlanguageservergen_p.h qlanguageservergen_p_p.h qlanguageservergen.cpp
       qlanguageserverprotocol_p.h qlanguageserverprotocol.cpp
       qlspnotifysignals_p.h qlspnotifysignals.cpp
+      qlspcustomtypes_p.h
     DEFINES
         QT_BUILD_LANGUAGESERVER_LIB
     PUBLIC_LIBRARIES
