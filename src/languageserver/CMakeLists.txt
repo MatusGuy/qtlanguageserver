@@ -29,7 +29,7 @@ qt_internal_add_module(LanguageServerPrivate
 function(link_qtlanguageserver tar)
   target_sources(tar PRIVATE qlanguageserver_p.h qlanguageserver_p_p.h qlanguageserver.cpp)
   target_link_libraries(tar PRIVATE Qt::LanguageServerPrivate)
-endif()
+endfunction()
 
 if(MSVC)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
