@@ -8,7 +8,6 @@
 qt_internal_add_module(LanguageServerPrivate
     INTERNAL_MODULE
     SOURCES
-      qlanguageserver_p.h qlanguageserver_p_p.h qlanguageserver.cpp
       qlanguageserverprespectypes_p.h
       qlanguageserverspec_p.h
       qlanguageserverspectypes_p.h
@@ -25,6 +24,12 @@ qt_internal_add_module(LanguageServerPrivate
         Qt::CorePrivate
         Qt::JsonRpcPrivate
 )
+
+# remember to use this function! Otherwise it will throw weird linker errors
+function(link_qtlanguageserver tar)
+  target_sources(tar PRIVATE qlanguageserver_p.h qlanguageserver_p_p.h qlanguageserver.cpp)
+  target_link_libraries(tar PRIVATE Qt::LanguageServerPrivate)
+endif()
 
 if(MSVC)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
