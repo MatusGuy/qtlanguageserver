@@ -28,7 +28,9 @@ qt_internal_add_module(LanguageServerPrivate
 # remember to use this function! Otherwise it will throw weird linker errors
 function(link_qtlanguageserver tar)
   target_sources(${tar} PRIVATE
-      ${PROJECT_SOURCE_DIR}/qlanguageserver_p.h ${PROJECT_SOURCE_DIR}/qlanguageserver_p_p.h ${PROJECT_SOURCE_DIR}/qlanguageserver.cpp)
+      ${CMAKE_CURRENT_SOURCE_DIR}/qlanguageserver_p.h
+      ${CMAKE_CURRENT_SOURCE_DIR}/qlanguageserver_p_p.h
+      ${CMAKE_CURRENT_SOURCE_DIR}/qlanguageserver.cpp)
   target_link_libraries(${tar} PRIVATE Qt::LanguageServerPrivate)
 endfunction()
 
