@@ -17,12 +17,22 @@ qt_internal_add_module(LanguageServerPrivate
       qlanguageservergen_p.h qlanguageservergen_p_p.h qlanguageservergen.cpp
       qlanguageserverprotocol_p.h qlanguageserverprotocol.cpp
       qlspnotifysignals_p.h qlspnotifysignals.cpp
+      qlspcustomtypes_p.h
     DEFINES
         QT_BUILD_LANGUAGESERVER_LIB
     PUBLIC_LIBRARIES
         Qt::CorePrivate
         Qt::JsonRpcPrivate
 )
+
+# remember to use this function! Otherwise it will throw weird linker errors
+function(link_qtlanguageserver tar dir)
+  target_sources(${tar} PRIVATE
+      ${dir}/qlanguageserver_p.h
+      ${dir}/qlanguageserver_p_p.h
+      ${dir}/qlanguageserver.cpp)
+  target_link_libraries(${tar} PRIVATE Qt::LanguageServerPrivate)
+endfunction()
 
 if(MSVC)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
